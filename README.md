@@ -33,8 +33,11 @@
 # 技术细节
 ## 智能合约存储什么？
 存储所有的proposal，每个proposal包含以下内容：
+![image](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-interop/raw/master/imgs/proposal_ds.png)
 
 1. config是序列化后的Config结构。存储原始信息。
+![image](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-interop/raw/master/imgs/config_ds.png)
+
 	* 其中Sequence存储计算ConfigUpdate时当前configblock的sequence
 	* 其中ChannelGroup存储用户的输入，他是一种"patch"的形式，存储用户的原始意图。（例如增加组织，就是在Application.Groups里增加一条KV）
 2. config_update是序列化后的ConfigUpdate结构，存储待签名的ConfigUpdate。
