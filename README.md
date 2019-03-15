@@ -35,20 +35,60 @@
 存储所有的proposal，每个proposal包含以下内容：
 ![image](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-interop/raw/master/imgs/proposal_ds.png)
 
-1. config是序列化后的Config结构。存储原始信息。
+### config是序列化后的Config结构。存储原始信息。
 ![image](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-interop/raw/master/imgs/config_ds.png)
 
-	* 其中Sequence存储计算ConfigUpdate时当前configblock的sequence
-	* 其中ChannelGroup存储用户的输入，他是一种"patch"的形式，存储用户的原始意图。（例如增加组织，就是在Application.Groups里增加一条KV）
-2. config_update是序列化后的ConfigUpdate结构，存储待签名的ConfigUpdate。
-3. signatures的value是序列化后的ConfigSignature结构。存储各个组织上传的签名。
+* 其中Sequence存储计算ConfigUpdate时当前configblock的sequence
+* 其中ChannelGroup存储用户的输入，他是一种"patch"的形式，存储用户的原始意图。（例如增加组织，就是在Application.Groups里增加一条KV）
+### config_update是序列化后的ConfigUpdate结构，存储待签名的ConfigUpdate。
+### signatures的value是序列化后的ConfigSignature结构。存储各个组织上传的签名。
 
 ## ProposeConfigUpdate流程（AddOrgnization、ReconfigOrgnizationMSP与该流程逻辑类似）
 ![image](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-interop/raw/master/imgs/propose_config_update.png)
 
-## GetProposal流程（ListProposals、UpdateProposals与该流程逻辑类似）
+## GetProposal/UpdateProposals流程（ListProposals与该流程逻辑类似）
 ![image](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-interop/raw/master/imgs/get_proposal.png)
 
+## APP设计
+大部分逻辑内置到chaincode之后，APP设计就较为轻便。主要逻辑分为两部分：
+1. 根据用户的操作，提交ProposeConfigUpdate,AddSignature,UpdateProposals等请求。
+2. 监听cmscc调用事件和configblock事件，发生上述事件后调用ListProposals接口，获取最新的proposals状态展示给用户。
+
+# TODO List
+1. 增加删除Proposal接口
+2. 增加Proposal的owner访问控制。仅允许更新和删除本组织提交的Proposal。
+3. 可配置的EndorsementPolicy。可以通过chaincode的接口配置EndorsementPolicy，而不是固定的SignedByMajorityApplicationOrgnizations
+
 # FAQ
-Q:为何cmscc不主动发起config update的交易，而是需要org1或者org2发起？
-A:设计上智能合约应该是“被动的”，智能合约能主动发起交易是很奇怪的行为。技术上，peer节点不是ChannelWriter，也是无法提交交易给orderer的。
+Q:在集齐签名后，为何cmscc不主动发起config update的交易，而是需要org1或者org2发起？
+A:设计上智能合约应该是“被动的”，智能合约能主动发起交易是很奇怪的行为。技术上，默认peer节点不是ChannelWriter，也是无法提交交易给orderer的。
+
+# Demo（基于fabric-1.4和fabric-samples-1.4）
+源码地址：
+
+[fabric-1.4](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-fork/tree/interop-1.4)
+
+[fabric-samples-1.4](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-samples-fork/tree/interop-1.4)
+
+运行方法：
+
+* 先编译fabric
+
+```
+  cd fabric
+  make
+```
+
+* 使用fabric-samples/first-network初始化一个两节点的环境
+
+```
+  cd fabric-samples/first-network
+  ./byfn generate
+  ./byfn up
+```
+
+* 运行interop.sh
+
+```
+  ./interop.sh
+```
