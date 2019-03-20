@@ -1,3 +1,8 @@
+# 简介
+Hyperledger Fabric社区 [互操作性工作组](https://wiki.hyperledger.org/display/fabric/Fabric+Interop+Working+Group) 目前正致力于制定互操作性的标准化流程，以实现由不同云服务商提供的Fabric组织可以共同组成和参与业务网络，其中ordering服务可运行在任意一个平台上。
+
+该方案的核心部分是consortium management chaincode (cmcc)，以用户chaincode的方式提供。本文将分析这种方式的局限性，并探讨了采用系统chaincode的方案：consortium management system chaincode (cmscc).
+
 # cmcc方案的问题
 1. cmcc链码发布、版本管理问题。
 2. cmcc链码在通道中各个不同组织的初始化流程。
@@ -92,3 +97,4 @@ A:设计上智能合约应该是“被动的”，智能合约能主动发起交
 ```
   ./interop.sh
 ```
+

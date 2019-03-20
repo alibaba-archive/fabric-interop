@@ -1,3 +1,8 @@
+# Introduction
+The [Interoperability Working Group](https://wiki.hyperledger.org/display/fabric/Fabric+Interop+Working+Group) of Hyperledger Fabric community has been working on specifying and standardizing an interoperability workflow that allows organizations hosted on different cloud vendors to establish and join business networks independent from the infrastructure where the ordering services are hosted.
+
+The key part of current proposal is consortium management chaincode (cmcc), which is a kind of user chaincode. In this document, we will analyze the limitation of cmcc, and discuss an alternative of implementing it as system chaincode, consortium management system chaincode (cmscc).
+
 # Problems with the "cmcc" solution
 1. It is difficult to release and manage cmcc between different organizations.
 2. Cmcc needs to be installed and instantiated in different organizations.
@@ -91,3 +96,4 @@ Usage：
 ```
   ./interop.sh
 ```
+
