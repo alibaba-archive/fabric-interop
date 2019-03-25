@@ -70,9 +70,9 @@ A:Designing smart contracts should be "passive", and it is a strange behavior fo
 # Demo（Based on fabric-1.4 and fabric-samples-1.4）
 Source code：
 
-[fabric-1.4](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-fork/tree/interop-1.4)
+[fabric-1.4](https://github.com/alibaba/fabric/tree/interop-1.4)
 
-[fabric-samples-1.4](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-samples-fork/tree/interop-1.4)
+[fabric-samples-1.4](https://github.com/alibaba/fabric-samples/tree/interop-1.4)
 
 Usage：
 

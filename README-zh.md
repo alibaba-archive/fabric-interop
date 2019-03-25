@@ -71,9 +71,9 @@ A:设计上智能合约应该是“被动的”，智能合约能主动发起交
 # Demo（基于fabric-1.4和fabric-samples-1.4）
 源码地址：
 
-[fabric-1.4](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-fork/tree/interop-1.4)
+[fabric-1.4](https://github.com/alibaba/fabric/tree/interop-1.4)
 
-[fabric-samples-1.4](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-samples-fork/tree/interop-1.4)
+[fabric-samples-1.4](https://github.com/alibaba/fabric-samples/tree/interop-1.4)
 
 运行方法：
 
