@@ -38,10 +38,10 @@ There is currently a channel consisting of two organizations, Org1 and Org2. At 
 # Technical details
 ## What does the cmscc store?
 Store all the proposals, each proposal contains the following:
-![image](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-interop/raw/master/imgs/proposal_ds.png)
+![image](https://github.com/alibaba/fabric-interop/raw/master/imgs/proposal_ds.png)
 
 ### config is the serialized common.Config structure
-![image](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-interop/raw/master/imgs/config_ds.png)
+![image](https://github.com/alibaba/fabric-interop/raw/master/imgs/config_ds.png)
 
 * Where Sequence stores the sequence of the current configblock when calculating ConfigUpdate
 * The ChannelGroup stores the user's input. It is a "patch" form that stores the user's original intent. (For example, adding an organization means adding a KV to Application.Groups)
@@ -49,10 +49,10 @@ Store all the proposals, each proposal contains the following:
 ### The value of the signatures field is the serialized common.ConfigSignature structure. Store signatures uploaded by various organizations
 
 ## ProposeConfigUpdate process (AddOrgnization, ReconfigOrgnizationMSP is similar to this process)
-![image](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-interop/raw/master/imgs/propose_config_update.png)
+![image](https://github.com/alibaba/fabric-interop/raw/master/imgs/propose_config_update.png)
 
 ## GetProposal/UpdateProposals process (ListProposals is similar to this process)
-![image](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-interop/raw/master/imgs/get_proposal.png)
+![image](https://github.com/alibaba/fabric-interop/raw/master/imgs/get_proposal.png)
 
 ## APP design (currently implemented as shell scripts)
 After most of the logic is built into the chaincode, the APP design is lighter. The main logic is divided into two parts:

@@ -38,10 +38,10 @@ Hyperledger Fabric社区 [互操作性工作组](https://wiki.hyperledger.org/di
 # 技术细节
 ## 智能合约存储什么？
 存储所有的proposal，每个proposal包含以下内容：
-![image](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-interop/raw/master/imgs/proposal_ds.png)
+![image](https://github.com/alibaba/fabric-interop/raw/master/imgs/proposal_ds.png)
 
 ### config是序列化后的Config结构
-![image](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-interop/raw/master/imgs/config_ds.png)
+![image](https://github.com/alibaba/fabric-interop/raw/master/imgs/config_ds.png)
 
 * 其中Sequence存储计算ConfigUpdate时当前configblock的sequence
 * 其中ChannelGroup存储用户的输入，他是一种"patch"的形式，存储用户的原始意图。（例如增加组织，就是在Application.Groups里增加一条KV）
@@ -49,10 +49,10 @@ Hyperledger Fabric社区 [互操作性工作组](https://wiki.hyperledger.org/di
 ### signatures的value是序列化后的ConfigSignature结构。存储各个组织上传的签名。
 
 ## ProposeConfigUpdate流程（AddOrgnization、ReconfigOrgnizationMSP与该流程逻辑类似）
-![image](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-interop/raw/master/imgs/propose_config_update.png)
+![image](https://github.com/alibaba/fabric-interop/raw/master/imgs/propose_config_update.png)
 
 ## GetProposal/UpdateProposals流程（ListProposals与该流程逻辑类似）
-![image](http://gitlab.alibaba-inc.com/aliyun-blockchain/fabric-interop/raw/master/imgs/get_proposal.png)
+![image](https://github.com/alibaba/fabric-interop/raw/master/imgs/get_proposal.png)
 
 ## APP设计（目前以shell脚本实现）
 大部分逻辑内置到chaincode之后，APP设计就较为轻便。主要逻辑分为两部分：
